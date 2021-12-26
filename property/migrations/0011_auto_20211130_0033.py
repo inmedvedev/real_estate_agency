@@ -6,7 +6,10 @@ def transfer_data(apps, shema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
     for owner in Owner.objects.all():
-        owner_flats = Flat.objects.filter(owner=owner.owner, owners_phonenumber_formatted=owner.owners_phonenumber_formatted)
+        owner_flats = Flat.objects.filter(
+            owner=owner.owner,
+            owners_phonenumber_formatted=owner.owners_phonenumber_formatted
+        )
         for flat in owner_flats:
             owner.flats_in_property.add(flat)
 
